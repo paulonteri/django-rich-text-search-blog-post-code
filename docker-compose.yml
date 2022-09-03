@@ -1,0 +1,18 @@
+# docker-compose -f docker-compose.dev.yml up --build
+version: "3.3"
+
+services:
+    postgres:
+        restart: always
+        image: postgres:latest
+        environment:
+            - POSTGRES_DB=myblog
+            - POSTGRES_USER=myblog
+            - POSTGRES_PASSWORD=myblog
+        ports:
+            - "5432:5432"
+        volumes:
+            - pgdata:/var/lib/postgresql/data/
+
+volumes:
+    pgdata:
